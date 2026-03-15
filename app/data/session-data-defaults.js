@@ -1,5 +1,9 @@
+let people = require('./people.json')
+ 
 module.exports = {
+ 
 
-  // Insert values here
-
+  people,
+   'first-name': 'Boab',
+  'over-18': 'yes'
 }

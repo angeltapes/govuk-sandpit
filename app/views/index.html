@@ -4,17 +4,148 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<!-- You can amend the style of any page using CSS -->
+<!-- <style>
+  .govuk-header{
+  /* color:#000;background-color:#2a8e02 */
+  background-image: linear-gradient(red, yellow);}
+</style> -->
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+<!-- Load P5.js using a CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+<script src="https://openprocessing.org/openprocessing_sketch.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/addons/p5.sound.min.js"></script>
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
-
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+<div class="govuk-grid-row">s
+  <h1 class="govuk-heading-l">
+    Prototype snippets, examples and hacks
+  </h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body">
+        I made this prototype to store useful code and techniques. <strong>This isn't a real government service.</strong> 
+        This prototype brings together
+        different techniques I've learned from the projects I've done.
+      </p>
+      <p class="govuk-body">
+        I've worked as a government interaction designer since 2020. Contact me on LinkedIn if you have any feedback - I'm <a href="https://www.linkedin.com/in/bobbykingweb/" target="_blank">Bobby King</a> (link opens in a new tab).
+      </p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <!-- Draw some moving balls with P5.js -->
+      <script>
+        let curves; 
+        
+        function setup() {
+          let canvas = createCanvas(200,200);
+          background(255);
+          canvas.parent("p5-sketch");
+          imageMode(CENTER);
+          angleMode(DEGREES);
+          fill('#eae6e5');
+          stroke('#273f34');
+        }
+        
+        function draw() {
+          background(255);
+          circle(60, 100 - sin(frameCount) * 50, 25);
+          circle(120, 100 - sin(frameCount - 50) * 50, 25);
+          circle(180, 100 - sin(frameCount - 100) * 50, 25);
+        }
+      </script>
+      <!-- P5 uses the following div to animate the three balls -->
+      <div id="p5-sketch"></div>
+    </div>
   </div>
-</div>
-
-{% endblock %}
+  
+  <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--m">    
+      <h2 class="govuk-heading-m">
+        Example journeys
+      </h2></caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Journey</th>
+          <th scope="col" class="govuk-table__header">What it's for</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./errors/input" class="govuk-link">Error page</a>
+          </th>
+          <td class="govuk-table__cell">Enter values in a text box to trigger errors.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./dataviz/d3-bar-chart" class="govuk-link">D3 bar chart</a>
+            / <a href="./dataviz/d3-line-chart" class="govuk-link">D3 line chart</a>
+          </th>
+          <td class="govuk-table__cell">Graphs made with Nunjucks and D3.js</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./map/map" class="govuk-link">Interactive maps</a>
+          </th>
+          <td class="govuk-table__cell">Interactive maps, made with Leaflet JS and Open Street Map.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./passing-data/index.html?myURLdata=carrot" class="govuk-link">Passing data</a>
+          </th>
+          <td class="govuk-table__cell">A summary of ways to capture data and pass it from page to page</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./cases/index?status-filter=New&status-filter=In progress&status-filter=On hold&status-filter=Complete" class="govuk-link">Case management example</a>
+          </th>
+          <td class="govuk-table__cell">A list of cases populated by JSON</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"><a href="./editable-pages/editor-radios" class="govuk-link">Form question code generator</a></th>
+          <td class="govuk-table__cell">A tool for content designers and interaction designers to quickly generate page content</td>
+        </tr> 
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            <a href="./templates/index" class="govuk-link">Templates</a>
+          </th>
+          <td class="govuk-table__cell">A selection of pages we use on a regular basis, set up for replaying answers when you revisit a page</td>
+        </tr>   
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            <a href="./juggling-service/start" class="govuk-link">Advanced Juggling licence application</a>
+          </th>
+          <td class="govuk-table__cell">The prototype kit juggling licence example, with extra pages and useful code snippets</td>
+        </tr>   
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"> <a href="./passing-data/js-sandpit" class="govuk-link">Javascript sandpit</a>
+            
+          </th>
+          <td class="govuk-table__cell">Useful JS snippets</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Other experiments</h3>
+    <p class="govuk-body">
+      <a href="balsalmiq-style" class="govuk-link">Switch on Balsalmiq (rough) styles</a>
+    </p>
+    <p class="govuk-body">
+      <a href="./scottish-files/question" class="govuk-link">Scottish Design System styles</a> - legit version
+    </p>
+    <p class="govuk-body">
+      <a href="scottish" class="govuk-link">Scottish Design System hack</a> - using CSS to hide the gov.uk header
+    </p>
+    <p class="govuk-body">
+      <a href="./shoestring-ui/" class="govuk-link">Shoestring UI</a> - a simple CSS framework for building apps
+    </p>
+    <p>
+      <a href="p5-sandpit.html">P5.js sandpit</a> - adding extra interactivity with P5 / Processing
+    </p>
+    <h2>Useful snippets</h2>
+    <p>Here's an example of JSON data, pulled from the file app\data\people.json.</p>
+    <p>To use the JSON, add new lines to the file app\data\session-data-defaults.js</p>
+    <p>
+      {% for person in data['people'] %}
+      {{person.name}}<br>
+      {% endfor %}
+    </p>
+  </div>
+  
+  {% endblock %}
+  

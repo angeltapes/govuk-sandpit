@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!-- {% include "govuk-prototype-kit/includes/homepage-top.njk" %} -->
+
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }} prototype
+    </h1>
+    <p class="govuk-body">
+      The current version has been handed over to developers to build
+    </p>
+    {{ govukButton({
+      text: "Current version"
+    }) }}
+    <h2 class="govuk-heading-m">
+      New versions
+    </h2>
+    <p class="govuk-body">
+      September 2024 - <a href="./juggling-service/start" class="govuk-link">Advanced Juggling licence application</a> for User Research
+    </p>
+    <p class="govuk-body">
+      August 2024 - <a href="./templates/index" class="govuk-link">Manager journey</a> for stakeholder review
+    </p>
+    <p class="govuk-body">
+      <a href="balsalmiq-style" class="govuk-link">Switch on Balsalmiq (rough) styles</a>
+    </p>
+    <p class="govuk-body">
+      <a href="./scottish-files/question" class="govuk-link">Scottish Design System styles</a> - legit version
+    </p>
+    <p class="govuk-body">
+      <a href="scottish" class="govuk-link">Scottish Design System hack</a> - using CSS to hide the gov.uk header
+    </p>
+    <!-- {{ govukButton({
+      text: "Continue"
+    }) }} -->
+    <!-- {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %} -->
+  </div>
+</div>
+
+{% endblock %}

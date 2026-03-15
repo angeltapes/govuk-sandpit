@@ -1,0 +1,15 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<h1>Test</h1>
+<p>Here's my variable - {{data.myvar}}</p> 
+<p>Here's a variation - {{data['my-variable']}}</p> 
+  <p>
+    Go back to the main <a href="index">passing data page</a>. 
+  </p>
+
+{% endblock %}
+  
