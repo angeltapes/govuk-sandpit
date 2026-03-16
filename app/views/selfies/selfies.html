@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Take a selfie
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l ">Selfies</h1>
+    <p>This example lets you activate your device camera. Made using <a href="https://p5js.org/" target="_blank">p5js</a>.</p>
+  <!-- 	P5 CDN links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <script src="https://openprocessing.org/openprocessing_sketch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.js"></script>
+
+  <!-- The P5 sketch runs in the following <div>: -->
+  <div id="p5Canvas"></div>
+  <div class="govuk-button-group">
+      <button type="submit" class="govuk-button" data-module="govuk-button" onclick="takePhoto()">
+        Take photo
+      </button>
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="reTake()">
+        Retake
+      </button>
+    </div>
+    <p class="govuk-body"><a href="#">Use this photo</a></p>
+    {% include "./selfies.js" %}
+<!--
+
+End of Main section
+
+-->
+
+{% endblock %}
