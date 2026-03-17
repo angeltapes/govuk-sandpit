@@ -4,5 +4,5 @@ View the live version at https://juggling-licence-cmpo.onrender.com/
 
 Password: **sandpit**
 
-Hire us to design your service, app and website. https://madmarch.co.uk
+Hire [https://madmarch.co.uk][Madmarch] to design your online service, app or website. 
 
