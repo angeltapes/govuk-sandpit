@@ -1,19 +1,10 @@
 
   <script>
   let p, userInput, botResponse;
-  userInput = document.getElementById("my-input").value;
- 	// Execute a function when the user presses a key on the keyboard
-     userInput.addEventListener("keypress", function(event) {
-       // If the user presses the "Enter" key on the keyboard
-       if (event.key === "Enter") {
-         // Cancel the default action, if needed
-         event.preventDefault();
-         // Trigger the button element with a click
-         checkSubmit()
-       }
-     });
+
 
 function sendChat(){
+	userInput = document.getElementById("my-input").value;
 
 	// add the user input to the chat window
 	var para = document.createElement("p");
@@ -54,7 +45,7 @@ function sendChat(){
 	// display the new content
 	para.innerText = botResponse;
 	var updates = document.getElementById('bot-updates');
-	updates.append(botResponse);
+	updates.append(para);
 	var scroller = document.getElementById('bot-updates');
 	scroller.scrollTop = scroller.scrollHeight;
 
@@ -65,7 +56,7 @@ function sendChat(){
 		var a = document.createElement('button');
 		a.setAttribute('onClick','helpContent()');
 		a.innerHTML = 'Tell me more';
-	   a.classList.add("bot-link");
+	    a.classList.add("bot-link");
 		updates.append(a);
    }
 
@@ -102,7 +93,7 @@ function helpContent(){
 function grantContent(){
 	// display the new content
 	var para = document.createElement("p");
-	para.innerText = "You can apply for a juggling grant to help with the cost of balls, clubs and transport. Visit GOV.UK to start the application process.";
+	para.innerHTML = "<p>You can apply for a juggling grant to help with the cost of balls, clubs and transport. Visit GOV.UK to start the application process.</p>";
 	var updates = document.getElementById('bot-updates');
 	updates.append(para);
 }

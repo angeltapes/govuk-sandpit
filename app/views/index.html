@@ -18,8 +18,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <p class="govuk-body">
-        I made this prototype to store useful code and techniques. <strong>This isn't a 
-          real government service.</strong> 
+        I made this prototype to store useful code and techniques. <strong>This isn't a
+          real government service.</strong>
         This prototype brings together
         different techniques I've learned from the projects I've done.
       </p>
@@ -31,7 +31,7 @@
     <div class="govuk-grid-column-one-third">
       <!-- Draw some moving balls with P5.js -->
       <script>
-        let curves; 
+        let curves;
         function setup() {
           let canvas = createCanvas(200,200);
           background(255);
@@ -41,7 +41,7 @@
           fill('#eae6e5');
           stroke('#273f34');
         }
-        
+
         function draw() {
           background(255);
           circle(60, 100 - sin(frameCount) * 50, 25);
@@ -53,9 +53,9 @@
       <div id="p5-sketch"></div>
     </div>
   </div>
-  
+
   <table class="govuk-table">
-    <caption class="govuk-table__caption govuk-table__caption--m">    
+    <caption class="govuk-table__caption govuk-table__caption--m">
       <h2 class="govuk-heading-m">
         Example journeys
       </h2></caption>
@@ -66,6 +66,11 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header"> <a href="./chatbot/index" class="govuk-link">Chatbot</a>
+            </th>
+            <td class="govuk-table__cell">A simple chatbot based on JS rather than an LLM. Add this to prototypes for user research.</td>
+          </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header"> <a href="./selfies/selfies" class="govuk-link">Take a selfie</a>
           </th>
@@ -100,19 +105,19 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header"><a href="./editable-pages/editor-radios" class="govuk-link">Form question code generator</a></th>
           <td class="govuk-table__cell">A tool for content designers and interaction designers to quickly generate page content</td>
-        </tr> 
+        </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">
             <a href="./templates/index" class="govuk-link">Templates</a>
           </th>
           <td class="govuk-table__cell">A selection of pages we use on a regular basis, set up for replaying answers when you revisit a page</td>
-        </tr>   
+        </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">
             <a href="./juggling-service/start" class="govuk-link">Advanced Juggling licence application</a>
           </th>
           <td class="govuk-table__cell">The prototype kit juggling licence example, with extra pages and useful code snippets</td>
-        </tr>   
+        </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header"> <a href="./passing-data/js-sandpit" class="govuk-link">Javascript sandpit</a>
           </th>
@@ -148,4 +153,3 @@
   </div>
   </div>
   {% endblock %}
-  
