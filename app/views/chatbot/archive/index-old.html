@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<!--Load the p5.js library to control the bot-->
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/p5.js"></script>
+{% include "./style.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Chatbot</h1>
+  		<p>
+		  A simple chatbot which only matches words. It doesn't use a Large Language Model. This isn't a real government serivce.
+		</p>
+		<p>
+		<input id="new-input" onclick="checkPost()">
+		<button onClick="checkPost()">Click</button>
+		</p>
+
+<!-- 			New content appears in the following div: -->
+		<div id="bot-updates" class="govuk-width-container">
+			<p>Ask me a question about juggling or getting a juggling grant. Type 'Help' at any time for options.</p>
+            <button onClick="grantContentx()" class="bot-link">Apply for a juggling grant</button>
+		</div>
+<!-- 		<div id="scroll-button">
+			<button onClick="scrollToBottom()">Scroll to the bottom</button>
+		</div>-->
+		<enter-chat>
+			<label class="govuk-label govuk-label--s" for="my-input">Write a message</label>
+			<!--<textarea id="my-input" class="govuk-input" rows="1"></textarea>-->
+				<textarea id="my-input" class="govuk-input" rows="1"></textarea>
+		   <button onClick="sendChat()" id="enter" class="govuk-button">Send</button>
+		</enter-chat>
+	</div>
+  </div>
+
+  {% include "./script.html" %}
+</div>
+</div>
+{% endblock %}

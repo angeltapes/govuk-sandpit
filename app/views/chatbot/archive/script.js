@@ -1,27 +1,27 @@
 
   <script>
-  let p, userInput, botResponse;
-  
-  
+    let p, userInput, botResponse;
+
 function sendChat(){
-	userInput = document.getElementById("my-input").value; 
+  userInput = document.getElementById("my-input").value;
 
 	// add the user input to the chat window
 	var para = document.createElement("p");
 	para.innerText = userInput;
 	para.classList.add("user-input");
 	var updates = document.getElementById('bot-updates');
-   updates.append(para);
+  updates.append(para);
 
-   // create the response paragraph	
+  // create the response paragraph
 	para = document.createElement("p");
 
 	// pick a reponse, based on matching a string
-   if (userInput.toLowerCase().includes("help")){
+  if (userInput.toLowerCase().includes("help")){
 		botResponse = "I can tell you about juggling, or applying for the juggling grant.";
 	}
-	// needs an exact match from a phrase, and nothing else 
-	else if (userInput.toLowerCase() == "yas"){ 
+
+	// needs an exact match from a phrase, and nothing else
+	else if (userInput.toLowerCase() == "yas"){
 		botResponse = "That's the one!! YAS!";
 	}
 
@@ -45,13 +45,13 @@ function sendChat(){
 	// display the new content
 	para.innerText = botResponse;
 	var updates = document.getElementById('bot-updates');
-	updates.append(para);
+	updates.append(botResponse);
 	var scroller = document.getElementById('bot-updates');
 	scroller.scrollTop = scroller.scrollHeight;
 
 	// show optional links
    if (userInput.toLowerCase().includes("help")){
-	   
+
 	   // Create a button along with the text
 		var a = document.createElement('button');
 		a.setAttribute('onClick','helpContent()');
@@ -61,7 +61,7 @@ function sendChat(){
    }
 
 	if (userInput.toLowerCase().includes("juggling")){
-	   
+
 	   // Create a button along with the text
 		var a = document.createElement('button');
 		a.setAttribute('onClick','grantContent()');
@@ -93,9 +93,26 @@ function helpContent(){
 function grantContent(){
 	// display the new content
 	var para = document.createElement("p");
-	para.innerHTML = "<p>You can apply for a juggling grant to help with the cost of balls, clubs and transport. Visit GOV.UK to start the application process.</p>";
+	para.innerText = "You can apply for a juggling grant to help with the cost of balls, clubs and transport. Visit GOV.UK to start the application process.";
 	var updates = document.getElementById('bot-updates');
 	updates.append(para);
+}
+
+function xgrantContent(){
+	// display the new content
+	var para = document.createElement("p");
+	para.innerText = "xYou can apply for a juggling grant to help with the cost of balls, clubs and transport. Visit GOV.UK to start the application process.";
+	var updates = document.getElementById('bot-updates');
+	updates.append(para);
+}
+
+function checkPost(){
+  var myInput = document.getElementById("my-input");
+     myInput.addEventListener("keydown", function (e) {
+      if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+          background(255,200,random(0,255))
+      }
+     });
 }
 
 // submit the input box if you press the return key
@@ -108,4 +125,5 @@ function keyPressed(){
 function scrollToBottom(message){
 	 alert(message);
 }
+
   </script>
