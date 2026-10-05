@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.js"></script>
+	<script src="mySketch.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="https://service-manual.nhs.uk/stylesheets/main.dee0a48.min.css">
+<script src="https://d3js.org/d3.v4.js"></script>
+</head>
+
+<body>
+	<header class="nhsuk-header" data-module="nhsuk-header" role="banner" data-nhsuk-header-init="">
+  <div class="nhsuk-header__container nhsuk-width-container">
+    <div class="nhsuk-header__service">
+      <svg class="nhsuk-header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" height="40" width="100" focusable="false" role="img" aria-label="NHS">
+        <title>Adult social care data</title>
+        <path fill="currentcolor" d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"></path>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="nhsuk-main-wrapper" id="maincontent">
+
+    <div class="nhsuk-width-container">
+      <a class="nhsuk-back-link" href="#">
+        Back
+      </a>
+
+      <main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+              <h1 class="nhsuk-heading-xl">Care homes data</h1>
+
+              <dl class="nhsuk-summary-list">
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Areas
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            Suffolk, Essex, Norfolk
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> NHS number</span></a>
+                          </dd>
+                        </div>
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Date range
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                             Jan 2026 - present
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> NHS number</span></a>
+                          </dd>
+                        </div>
+                        <div class="nhsuk-summary-list__row">
+                          <dt class="nhsuk-summary-list__key">
+                            Metric
+                          </dt>
+                          <dd class="nhsuk-summary-list__value">
+                            Care home - total population
+                          </dd>
+                          <dd class="nhsuk-summary-list__actions">
+                            <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> NHS number</span></a>
+                          </dd>
+                        </div>
+              </dl>
+
+              <style>
+                @media only screen and (max-width: 500px) {
+                  #my_dataviz,  #my_dataviz2{
+                    width:400px;
+                    overflow-x: scroll;
+                  }
+                }
+                .legendTitle, .chartText{font-size:1.2em}
+                .chartAxis{font-size:1.5em}
+
+              </style>
+              <!-- Add a svg area, empty -->
+              <div id="my_dataviz"></div>
+
+              <!-- Based on the example https://d3-graph-gallery.com/intro_d3js.html -->
+              <script>
+
+              // set the dimensions and margins of the graph
+              var margin = {top: 50, right: 300, bottom: 100, left: 100},
+                  width = 800 - margin.left - margin.right,
+                  height = 300 - margin.top - margin.bottom;
+
+              // append the svg object to the body of the page
+              var svg = d3.select("#my_dataviz")
+                .append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                  .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+              // Create data - wrap all the graph commands in this function:
+              d3.csv("/public/csv/las.csv", function(data) {
+              // this is the equivalent of eg var loaded = [ {x:10, y:20}, {x:40, y:90}, {x:80, y:50} ]
+
+              // Add X axis
+              var x = d3.scaleLinear()
+                  .domain([0, 3000])
+                  .range([ 0, width]);
+                svg.append("g")
+                  .attr("transform", "translate(0," + height + ")")
+                  .call(d3.axisBottom(x))
+                  .selectAll("text")
+                    .attr("transform", "translate(-10,0)rotate(-45)")
+                    .style("text-anchor", "end")
+                    .attr("class","chartAxis");
+
+                // Y axis
+                var y = d3.scaleBand()
+                  .range([ 0, height ])
+                  .domain(data.map(function(d) { return d.LA; }))
+                  .padding(.6);
+                svg.append("g")
+                  .call(d3.axisLeft(y))
+                  .attr("class","chartText");
+
+                //Bars
+                svg.selectAll("myRect")
+                  .data(data)
+                  .enter()
+                  .append("rect")
+                  .attr("x", x(0) )
+                  .attr("y", function(d) { return y(d.LA); })
+                  .attr("width", function(d) { return x (d.Value); })
+                  .attr("height", y.bandwidth() )
+                  .attr("fill", "#69b3a2");
+
+                  svg.attr("transform",  "translate(150 50)")
+
+                  // Add a legend
+              const legend = svg.append("g");
+              legend.append("text")
+	.text("Care homes users by local authority")
+	.attr("x", 0)
+	.attr("y", -20)
+	.attr("class", "legendTitle");
+                 //  Log the data
+                  console.log(data);
+                 });
+              </script>
+              <p>Here's the same data shown in a table with conditional formatting:</p>
+              <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-half">
+                <h3>Care home patients by local authority</h3>
+                  <table class="govuk-table">
+                  <!-- <caption><h3 class="govuk-heading-s" style="text-align:left">Suffolk County Council</h3></caption>
+                  <tr class="govuk-table__row"> -->
+                    <th scope="row" class="govuk-table__header">Suffolk</th>
+                    <td class="govuk-table__cell">1500
+                      <svg viewBox="0 0 60 10" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" width="60" height="5" rx="1"stroke="#e1e1e1" fill="white"/>
+                        <rect x="0" width="30" height="5" rx="1"fill="gold" stroke="grey"/>
+                      </svg>
+                    </td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Cambridgeshire</th>
+                    <td class="govuk-table__cell">1,200
+                      <svg viewBox="0 0 60 10" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" width="60" height="5" rx="1"stroke="#e1e1e1" fill="white"/>
+                          <rect x="0" width="24" height="5" rx="1"fill="gold" stroke="grey"/>
+                      </svg>
+                    </td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Norfolk</th>
+                    <td class="govuk-table__cell">2,800
+                      <svg viewBox="0 0 60 10" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" width="60" height="5" rx="1"stroke="#e1e1e1" fill="white"/>
+                            <rect x="0" width="53" height="5" rx="1"fill="gold" stroke="grey"/>
+                      </svg>
+                    </td>
+                  </tr>
+                  </table>
+                  </div>
+                  </div
+
+              <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+                Continue
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </main>
+</div>
+
+</body>
+
+</html>
