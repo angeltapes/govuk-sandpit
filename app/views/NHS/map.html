@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.js"></script>
+	<script src="mySketch.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="https://service-manual.nhs.uk/stylesheets/main.dee0a48.min.css">
+
+</head>
+
+<body>
+	<header class="nhsuk-header" data-module="nhsuk-header" role="banner" data-nhsuk-header-init="">
+  <div class="nhsuk-header__container nhsuk-width-container">
+    <div class="nhsuk-header__service">
+      <svg class="nhsuk-header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" height="40" width="100" focusable="false" role="img" aria-label="NHS">
+        <title>Adult social care data</title>
+        <path fill="currentcolor" d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"></path>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-width-container">
+      <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+        <ol class="nhsuk-breadcrumb__list">
+          <li class="nhsuk-breadcrumb__list-item">
+            <a class="nhsuk-breadcrumb__link" href="#">
+              Home
+            </a>
+          </li>
+          <li class="nhsuk-breadcrumb__list-item">
+              Adult social care data
+          </li>
+        </ol>
+        <a class="nhsuk-back-link" href="#">
+          <span class="nhsuk-u-visually-hidden">Back to </span>Online services
+        </a>
+      </nav>
+
+  <main class="nhsuk-main-wrapper" id="maincontent">
+
+    <h1 class="nhsuk-heading-xl">Care home provision in your area</h1>
+    <p class="nhsuk-body-l">Care homes and their ratings</p>
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+
+<style>
+  #map { height: 420px; width:100%}
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+
+<style>
+  #map { height: 420px; width:100%}
+</style>
+
+<p><img src="/public/images/your-juggling-business.svg" style="width:1.2em; margin-right: 0.5em;">Your location <img src="/public/images/five.svg" style="width:1.2em; margin-left:1em; margin-right: 0.5em;">Care homes</p>
+<div id="map"></div>
+<script>
+  var map = L.map('map').setView([52.05, 0.72], 11);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  var marker = L.marker([52.05, 0.72], 11).addTo(map);
+  marker.bindPopup("<b>Suffolk</b><br>Registered care homes: 23<br>Average rating: 3.5 ");
+
+  // var marker2 = L.marker([52.07, 0.72], 11).addTo(map);
+  // marker2.bindPopup("<b>Greenfields Care</b><br>Dementia beds: 6<br>All beds: 18").openPopup();
+
+  var greenIcon = L.icon({
+    iconUrl: '/public/images/your-juggling-business.svg',
+
+    iconSize:     [40, 50], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var threeIcon = L.icon({
+    iconUrl: '/public/images/three.svg',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var fourIcon = L.icon({
+    iconUrl: '/public/images/four.svg',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var fiveIcon = L.icon({
+    iconUrl: '/public/images/five.svg',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+L.marker([52.01, 0.71], {icon: greenIcon}).addTo(map).bindPopup("<b>Sunnyside</b><br>Your location");
+L.marker([52.1, 0.74], {icon: fiveIcon}).addTo(map).bindPopup("<b>Prescott House</b><br>Rating: 5 (high)<br>Types: Adult care, dementia care, knives, fire");
+L.marker([52.12, 0.738], {icon: fourIcon}).addTo(map).bindPopup("<b>Forest View</b><br>Rating: 4 (medium high)<br>Types: Adult care, dementia care");
+L.marker([52.01, 0.738], {icon: threeIcon}).addTo(map).bindPopup("<b>Woodlands Home</b><br>Rating: 3 (medium)<br>Types: Adult care, dementia care, fire");
+L.marker([52.04, 0.695], {icon: threeIcon}).addTo(map).bindPopup("<b>Riverview</b><br>Rating: 3 (medium)<br>Types: Adult care, dementia care");
+L.marker([52.15, 0.95], {icon: fiveIcon}).addTo(map).bindPopup("<b>Sycamore Road</b><br>Rating: 5 (high)<br>Types: residential living");;
+// marker.bindPopup("<b>Your pin</b><br>Click the map to change your location");
+
+</script>
+
+<table class="govuk-table" style="margin-top:2em">
+  <caption class="govuk-table__caption govuk-table__caption--m">Care homes in your area</caption>
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Name</th>
+      <th scope="col" class="govuk-table__header">Rating</th>
+      <th scope="col" class="govuk-table__header">Tags</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Woodland Home</th>
+      <td class="govuk-table__cell">3 (Medium)</td>
+      <td class="govuk-table__cell">Adult care, dementia care</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Riverview</th>
+      <td class="govuk-table__cell">3 (Medium)</td>
+      <td class="govuk-table__cell">Adult care, dementia care, outpatient</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Prescott House</th>
+      <td class="govuk-table__cell">5 (High)</td>
+      <td class="govuk-table__cell">Adult care, dementia care</td>
+    </tr>
+  </tbody>
+</table>
+
+  </main>
+</div>
+
+</body>
+
+</html>
