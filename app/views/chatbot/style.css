@@ -1,23 +1,4 @@
-/* Chat input and enter button */
-enter-chat {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding: 1em;
-    z-index: 99;
-    background-color: white;
-    border-top: 1px solid slategrey;
-    border-left: 10% solid #e1e1e1;
-}
-
-/* mobile-first content*/
-.content-row {
-    width: 80%;
-    margin: 0;
-    padding-bottom: 2em;
-}
-
-/* Main container for the chat text */
+/* Main container for the chat updates */
 #bot-updates {
     margin: 0;
     padding: 1em 1em 0 0;
@@ -44,6 +25,19 @@ enter-chat {
     margin: 1em 0 1em 0;
 }
 
+/* Div containing the chat input and enter button */
+enter-chat {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1em;
+    z-index: 99;
+    background-color: white;
+    border-top: 1px solid slategrey;
+    display: block;
+    width:100%
+}
+
 @media only screen and (max-width: 699px) {
     .user-input {
         max-width: 20em;
@@ -51,12 +45,15 @@ enter-chat {
     enter-chat {
         padding: 0.5em 1em;
     }
+    enter-chat label {
+        display: block;
+    }
+    #enter{width:90%}
     #my-input {
         /* input box */
-        width: 100%;
+        width: 90%;
         line-height: 1.6em;
         font-size: 1.1em;
-        margin-right: 1em;
         margin-bottom: 1em;
     }
 }
@@ -86,12 +83,6 @@ enter-chat {
 button {
     font-size: 1em;
     padding: 0.4em;
-}
-
-@media only screen and (max-width: 699px) {
-    enter-chat label {
-        display: block;
-    }
 }
 
 .govuk-footer {

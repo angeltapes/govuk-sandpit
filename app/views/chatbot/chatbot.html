@@ -14,7 +14,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Chatbot</h1>
   		<p>
-		  A simple chatbot which only matches words. It doesn't use a Large Language Model. This isn't a real government serivce.
+		  A simple chatbot which only matches words. It doesn't use a Large Language Model. This isn't a real government service.
 		</p>
 <!-- 			New content appears in the following div: -->
 		<div id="bot-updates" class="govuk-width-container">
@@ -25,13 +25,13 @@
 <!-- 		<div id="scroll-button">
 			<button onClick="scrollToBottom()">Scroll to the bottom</button>
 		</div>-->
-		<enter-chat>
-			<label class="govuk-label govuk-label--s" for="my-input">Write a message</label>
-			<textarea id="my-input" name="my-input" class="govuk-textarea" rows="1" onKeyDown="checkPost(event)"></textarea>
-		    <button onClick="sendChat()" onKeyPress="return checkSubmit(event)" id="enter" class="govuk-button">Send</button>
-		</enter-chat>
-	</div>
   </div>
+</div>
+<enter-chat>
+	<label class="govuk-label govuk-label--s" for="my-input">Write a message</label>
+	<textarea id="my-input" name="my-input" class="govuk-textarea" rows="1" onKeyDown="checkPost(event)"></textarea>
+    <button onClick="sendChat()" onKeyPress="return checkSubmit(event)" id="enter" class="govuk-button">Send</button>
+</enter-chat>
 
  <script>
  let p, userInput, botResponse;
@@ -41,8 +41,8 @@ function sendChat(){
 
 	// add the user input to the chat window
 	var para = document.createElement("p");
-	para.innerText = userInput;
-	para.classList.add("user-input");
+	  para.innerText = userInput;
+	    para.classList.add("user-input");
 	var updates = document.getElementById('bot-updates');
     updates.append(para);
 
@@ -151,8 +151,8 @@ function checkPost(event){
 // submit the input box if you press the return key
 function keyPressed(){
    if(keyCode == 13) {
-   sendChat();
-}
+      sendChat();
+    }
 }
 
 function scrollToBottom(message){
