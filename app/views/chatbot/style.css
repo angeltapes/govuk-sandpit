@@ -1,93 +1,99 @@
 /* Chat input and enter button */
-enter-chat{
-	position:fixed;
-	bottom:0;
-	left:0;
-	padding:1em;
-	z-index: 99;
-	background-color: white;
-	border-top: 1px solid slategrey;
-	border-left: 10% solid #e1e1e1;
+enter-chat {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1em;
+    z-index: 99;
+    background-color: white;
+    border-top: 1px solid slategrey;
+    border-left: 10% solid #e1e1e1;
 }
 
 /* mobile-first content*/
-.content-row{
-	width:80%;
-	margin:0;
-	padding-bottom:2em;
+.content-row {
+    width: 80%;
+    margin: 0;
+    padding-bottom: 2em;
 }
 
 /* Main container for the chat text */
-#bot-updates{
-	margin:0;
-	padding: 1em 1em 0 0;
-	background-color:white;
-	padding-bottom: 9em
+#bot-updates {
+    margin: 0;
+    padding: 1em 1em 0 0;
+    background-color: white;
+    padding-bottom: 9em;
 }
 
-#bot-updates p{
-	margin-bottom: 1em
+#bot-updates p {
+    margin-bottom: 1em;
 }
 
-.user-input{ /* add the users inputs to the chat */
-   border: 1px solid #e1e1e1;
-	font-size:1.1em;
-	text-align: right;
-	padding:0.2em;
-	margin: 1em 0 1em 0;
+.user-input {
+    /* add the users inputs to the chat */
+    border: 1px solid #e1e1e1;
+    font-size: 1.1em;
+    text-align: right;
+    padding: 0.2em;
+    margin: 1em 0 1em 0;
 }
 
-.bot-link{ /* when the bot creates link text */
-	display: block;
-	margin: 1em 0 1em 0
+.bot-link {
+    /* when the bot creates link text */
+    display: block;
+    margin: 1em 0 1em 0;
 }
 
 @media only screen and (max-width: 699px) {
-  .user-input{
-    max-width: 20em;
-  }
-  enter-chat{
-    padding: 0.5em 1em
-  }
-  #my-input{ /* input box */
-	width:100%;
-	line-height:1.6em;
-	font-size:1.1em;
-	margin-right:1em;
-	margin-bottom: 1em;
-}
-}
-
-@media only screen and (min-width: 700px) {
-  enter-chat{
-	  padding:1em 1em 1em 10em;
-	  width:100%;
-  }
-  #my-input{ /* input box */
-    	width:50%;
-    	max-width:500px;
-    	line-height:1.6em;
-    	font-size:1.2em;
-    	margin-right:1em;
-        display:inline
+    .user-input {
+        max-width: 20em;
+    }
+    enter-chat {
+        padding: 0.5em 1em;
+    }
+    #my-input {
+        /* input box */
+        width: 100%;
+        line-height: 1.6em;
+        font-size: 1.1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
     }
 }
 
-#scroll-button{
-	right: 1em;
-	position:fixed;
-	bottom: 5em;
+@media only screen and (min-width: 700px) {
+    enter-chat {
+        padding: 1em 1em 1em 10em;
+        width: 100%;
+    }
+    #my-input {
+        /* input box */
+        width: 50%;
+        max-width: 500px;
+        line-height: 1.6em;
+        font-size: 1.2em;
+        margin-right: 1em;
+        display: inline;
+    }
 }
 
-button{
-	font-size:1em;
-	padding: 0.4em
+#scroll-button {
+    right: 1em;
+    position: fixed;
+    bottom: 5em;
+}
+
+button {
+    font-size: 1em;
+    padding: 0.4em;
 }
 
 @media only screen and (max-width: 699px) {
-	enter-chat label {
-		display:block
-	}
+    enter-chat label {
+        display: block;
+    }
 }
 
-.govuk-footer{display:none}
+.govuk-footer {
+    display: none;
+}
