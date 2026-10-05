@@ -1,9 +1,5 @@
-{# !!!! The Question pattern is currently being reviewed and is subject to change !!!! #}
-
-{% extends "sg-prototype-templates/layouts/_base-layout.njk" %}
-
 {% block pageTitle %}Question{% endblock %}
-
+<link rel="stylesheet" type="text/css" href="https://designsystem.gov.scot/webfiles/1790759070228/assets/themes/designsystem/css/main.css"/>
 {# Example of using a different logo in the header - in this case the Mygov.scot logo #}
 {% block siteBrandingLogo %}
 <a class="ds_site-branding__logo  ds_site-branding__link" href="/">
@@ -38,7 +34,7 @@
 
         {% block mainContent %}
         <div class="ds_layout__content">
-            
+
             {# Set the action attribute to the next page in your form's journey #}
             <form action="../index" method="post">
                 <div class="ds_question">
@@ -57,10 +53,10 @@
                                 <input id="chosen-date" name="chosen-date" type="text" class="ds_input  ds_input--fixed-10">
                             </div>
                         </div>
-                        
+
                     </fieldset>
                 </div>
-                
+
 
 <fieldset>
     <legend>What's the surprise twist?</legend>
@@ -79,10 +75,11 @@
             <label class="ds_radio__label" for="useful-maybe">The male model was Sean Connery</label>
         </div>
     </div>
-</fieldset>
+</fieldset">
 
 
-                <div class="button-group">
+
+                <div class="button-group" style="margin-top:2em">
                     <a href="/path/of/prev/page" class="ds_button  ds_button--cancel  ds_button--has-icon  ds_button--has-icon--left">
                         <svg class="ds_icon" aria-hidden="true" role="img"><use href="{{ assetPath }}/images/icons/icons.stack.svg#chevron_left"></use></svg>
                         Back
@@ -122,7 +119,7 @@
         </div>
         {% endblock %}
 
-        
+
     </main>
 </div>
 {% endblock %}
