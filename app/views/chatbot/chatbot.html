@@ -22,7 +22,7 @@
 		  A simple chatbot which only matches words. It doesn't use a Large Language Model. This isn't a real government service.
 		</p>
 		<p>Ask me a question about juggling or getting a juggling grant. Type 'Help' at any time for options.</p>
-        <button onClick="grantContent()" class="govuk-button--secondary" style="font-size: 1.1em;">Apply for a juggling grant</button>
+        <button onClick="grantContent()" class="govuk-button govuk-button--secondary">Apply for a juggling grant</button>
 
 <!-- 			New content appears in the following div: -->
 		<div id="bot-updates" class="govuk-width-container">
@@ -98,7 +98,16 @@ else if (userInput.toLowerCase().includes("grant")){
 	   // Create a button along with the text
 		var a = document.createElement('button');
 		a.setAttribute('onClick','helpContent()');
-		a.innerHTML = 'Tell me more';
+		a.innerHTML = 'Tell me about juggling';
+		a.classList.add("govuk-button");
+  	    a.classList.add("govuk-button--secondary");
+  		updates.append(a);
+
+    // Create a second button along with the text
+		var a = document.createElement('button');
+		a.setAttribute('onClick','grantContent()');
+		a.innerHTML = 'Apply for a juggling grant';
+		a.classList.add("govuk-button");
   	    a.classList.add("govuk-button--secondary");
   		updates.append(a);
 }
@@ -109,7 +118,8 @@ else if (userInput.toLowerCase().includes("grant")){
 		var a = document.createElement('button');
 		a.setAttribute('onClick','grantContent()');
 		a.innerHTML = 'Tell me about a Juggling Grant';
-	    a.classList.add("govuk-button--secondary");
+        a.classList.add("govuk-button");
+		a.classList.add("govuk-button--secondary");
 		updates.append(a);
 }
 
