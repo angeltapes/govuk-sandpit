@@ -1,3 +1,6 @@
+/* hidden div for status updates */
+.sr-only{position:absolute;left:100%}
+
 /* Main container for the chat updates */
 #bot-updates {
     margin: 0;
@@ -22,7 +25,11 @@
 .bot-link {
     /* when the bot creates link text */
     display: block;
-    margin: 1em 0 1em 0;
+    margin: 1em 0 1em 0
+}
+
+.govuk-button--secondary{
+    margin:1em 0 1em 0
 }
 
 /* Div containing the chat input and enter button */

@@ -6,9 +6,14 @@
 
 <!--Load the p5.js library to control the bot-->
 <script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/p5.js"></script>
+
+<!--Include a style sheet-->
 <style>
 {% include "./style.css" %}
 </style>
+
+<!-- Rendered EMPTY on page load -->
+<div role="status" class="sr-only" id="status-update"></div>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -16,10 +21,11 @@
   		<p>
 		  A simple chatbot which only matches words. It doesn't use a Large Language Model. This isn't a real government service.
 		</p>
+		<p>Ask me a question about juggling or getting a juggling grant. Type 'Help' at any time for options.</p>
+        <button onClick="grantContent()" class="govuk-button--secondary" style="font-size: 1.1em;">Apply for a juggling grant</button>
+
 <!-- 			New content appears in the following div: -->
 		<div id="bot-updates" class="govuk-width-container">
-			<p>Ask me a question about juggling or getting a juggling grant. Type 'Help' at any time for options.</p>
-            <button onClick="grantContent()" class="bot-link">Apply for a juggling grant</button>
 		</div>
 		<!--To add: scroll botton-->
 <!-- 		<div id="scroll-button">
@@ -41,8 +47,8 @@ function sendChat(){
 
 	// add the user input to the chat window
 	var para = document.createElement("p");
-	  para.innerText = userInput;
-	    para.classList.add("user-input");
+	 para.innerText = userInput;
+	 para.classList.add("user-input");
 	var updates = document.getElementById('bot-updates');
     updates.append(para);
 
@@ -93,7 +99,7 @@ else if (userInput.toLowerCase().includes("grant")){
 		var a = document.createElement('button');
 		a.setAttribute('onClick','helpContent()');
 		a.innerHTML = 'Tell me more';
-  	    a.classList.add("bot-link");
+  	    a.classList.add("govuk-button--secondary");
   		updates.append(a);
 }
 
@@ -103,13 +109,16 @@ else if (userInput.toLowerCase().includes("grant")){
 		var a = document.createElement('button');
 		a.setAttribute('onClick','grantContent()');
 		a.innerHTML = 'Tell me about a Juggling Grant';
-	   a.classList.add("bot-link");
+	    a.classList.add("govuk-button--secondary");
 		updates.append(a);
 }
 
 	// Reset the input box
 	document.getElementById("my-input").value = "";
 	document.getElementById("my-input").focus();
+
+	// Announce the change
+	document.getElementById('status-update').textContent = 'Chat updated';
 }
 
 // Add more content when the user clicks the 'Tell me more' button
